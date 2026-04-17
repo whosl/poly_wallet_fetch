@@ -80,7 +80,7 @@ class PolymarketDataFetcher:
         """
         all_trades = []
         page_offset = offset
-        page_size = min(limit, 10000)
+        page_size = min(limit, 1000)
 
         while True:
             params = {
@@ -107,9 +107,9 @@ class PolymarketDataFetcher:
 
             page_offset += len(trades)
 
-            # Safety limit
-            if page_offset >= 100000:
-                log.warning("Reached safety limit of 100k trades")
+            # Data API hard cap
+            if page_offset >= 3001:
+                log.warning("Reached Data API offset cap")
                 break
 
         return all_trades

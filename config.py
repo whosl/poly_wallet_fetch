@@ -49,6 +49,16 @@ RPC_DELAY = 0.1
 # Pagination
 POLYGONSCAN_PAGE_SIZE = 10000  # max rows per call
 GAMMA_PAGE_SIZE = 100
+DATA_API_PAGE_SIZE = 1000  # actual max per page from data-api.polymarket.com
+
+# RPC scanning
+RPC_CHUNK_SIZE = 500  # max blocks per eth_getLogs query (larger values return empty)
+RPC_CANDIDATE_URLS = [
+    "https://polygon-bor-rpc.publicnode.com",
+    "https://polygon.drpc.org",
+    "https://1rpc.io/matic",
+]
+BINARY_SEARCH_CHUNK = 10000  # block range for binary search steps
 
 # Output directory
 OUTPUT_DIR = "data"
