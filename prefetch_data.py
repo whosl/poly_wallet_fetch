@@ -32,7 +32,7 @@ def fetch_trades(wallet, limit=10000):
 
     all_trades = []
     offset = 0
-    page = min(limit, 10000)
+    page = min(limit, 1000)
 
     while True:
         url = "{}/trades".format(DATA_API)
@@ -59,8 +59,8 @@ def fetch_trades(wallet, limit=10000):
         offset += len(trades)
         time.sleep(0.3)
 
-        if offset >= 100000:
-            log.warning("Reached 100k limit")
+        if offset >= 3001:
+            log.warning("Reached Data API offset limit")
             break
 
     return all_trades
